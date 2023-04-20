@@ -6,7 +6,8 @@ const navbarShoppingCart= document.querySelector('.navbar-shopping-cart')
 const productDetailRight = document.querySelector('.product-detail-right')
 const arrowCloseAsideProductDetail = document.querySelector('.arrow-close-aside-product-detail')
 const cardsContainer = document.querySelector('.cards-container')
-console.log(cardsContainer)
+const productDetailClose = document.querySelector('.product-detail-close')
+console.log(productDetailClose)
 
 menuEmail.addEventListener('click', toggleDesktopMenu)
 mobileMenuIco.addEventListener('click', tooggleMobileMenu )
@@ -64,36 +65,6 @@ productList.push({
     image:"https://images.pexels.com/photos/1528975/pexels-photo-1528975.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 })
 
-productList.push({
-    nombre:'Bike',
-    precio:180,
-    image:"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-},
-{
-    nombre:'Chair',
-    precio:90,
-    image:"https://images.pexels.com/photos/4273433/pexels-photo-4273433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-},
-{
-    nombre:'Mirror',
-    precio:115,
-    image:"https://images.pexels.com/photos/1528975/pexels-photo-1528975.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-},{
-    nombre:'Bike',
-    precio:180,
-    image:"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-},
-{
-    nombre:'Chair',
-    precio:90,
-    image:"https://images.pexels.com/photos/4273433/pexels-photo-4273433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-},
-{
-    nombre:'Mirror',
-    precio:115,
-    image:"https://images.pexels.com/photos/1528975/pexels-photo-1528975.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-})
-
 function renderProducts(array){
     for (array of productList){
         console.log(array.nombre)
@@ -104,7 +75,7 @@ function renderProducts(array){
         productImg.setAttribute('src', array.image)
 
         const productInfo = document.createElement ('div');
-        productInfo.classList.add('product-info')
+        productInfo.classList.add('card-product-info')
 
         const productInfoDiv = document.createElement ('div');
 
