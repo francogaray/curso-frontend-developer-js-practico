@@ -6,17 +6,32 @@ const navbarShoppingCart= document.querySelector('.navbar-shopping-cart')
 const productDetailRight = document.querySelector('.product-detail-right')
 const arrowCloseAsideProductDetail = document.querySelector('.arrow-close-aside-product-detail')
 const cardsContainer = document.querySelector('.cards-container')
+const productDetailContainer = document.querySelector('.product-detail-card')
 const productDetailClose = document.querySelector('.product-detail-close')
-console.log(productDetailClose)
+console.log(productDetailContainer)
 
 menuEmail.addEventListener('click', toggleDesktopMenu)
 mobileMenuIco.addEventListener('click', tooggleMobileMenu )
 navbarShoppingCart.addEventListener('click', toggleProductDetailAside)
 arrowCloseAsideProductDetail.addEventListener('click', toggleProductDetailAside)
+productDetailClose.addEventListener('click', closeProductDetailAside )
 
+function closeProductDetailAside(){
+    productDetailContainer.classList.add('inactive')
+    
+}
+function openProductDetailAside(){
+
+    productDetailContainer.classList.remove('inactive')
+    productDetailRight.classList.add('inactive')
+    desktopMenu.classList.add('inactive')
+
+}
 
 function toggleDesktopMenu(){
     desktopMenu.classList.toggle('inactive')
+    productDetailContainer.classList.add('inactive')
+
 }
 function tooggleMobileMenu(){
     const isProductDetailRightClosed = productDetailRight.classList.contains('inactive')
@@ -24,6 +39,8 @@ function tooggleMobileMenu(){
         productDetailRight.classList.add('inactive')
     }
     mobileMenu.classList.toggle('inactive')
+    productDetailContainer.classList.add('inactive')
+
 }
 
 function toggleProductDetailAside(){
@@ -32,6 +49,11 @@ function toggleProductDetailAside(){
         mobileMenu.classList.add('inactive')
     }
     productDetailRight.classList.toggle('inactive')
+
+    const isProductDetailAsideClose = productDetailContainer.classList.contains('inactive')
+    if (!isProductDetailAsideClose) {
+        productDetailContainer.classList.add('inactive')
+    }
 }
 
 const productList= []
@@ -67,13 +89,14 @@ productList.push({
 
 function renderProducts(array){
     for (array of productList){
-        console.log(array.nombre)
+        // console.log(array.nombre)
         const productCard = document.createElement ('div');
         productCard.classList.add('product-card')
 
         const productImg = document.createElement('img')
         productImg.setAttribute('src', array.image)
-
+        productImg.setAttribute('alt', array.nombre)
+        productImg.addEventListener('click', openProductDetailAside)
         const productInfo = document.createElement ('div');
         productInfo.classList.add('card-product-info')
 
